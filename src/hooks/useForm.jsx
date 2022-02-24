@@ -14,19 +14,19 @@ export function useForm(inputs = {}) {
       // [name] will set up what onSubmit will pass in for ex. password, email, etc.
       return { ...prevState, [name]: value };
     });
+  };
 
-    const clearForm = () => {
-      setFormState(inputs);
-    };
-    // handleForm will be dynamic
+  const clearForm = () => {
+    setFormState(inputs);
+  };
+  // handleForm will be dynamic
 
-    return {
-      formState,
-      setFormState,
-      formError,
-      setFormError,
-      handleForm,
-      clearForm,
-    };
+  return {
+    formState,
+    setFormState,
+    formError,
+    setFormError,
+    handleForm,
+    clearForm,
   };
 }

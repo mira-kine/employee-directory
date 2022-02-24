@@ -16,11 +16,13 @@ export default function Auth({ isSigningUp = false }) {
       } else {
         const resp = await signInUser(email, password);
         setCurrentUser({ id: resp.id, email: resp.email });
+        history.replace('/profile');
       }
     } catch (error) {
       throw error;
     }
   };
+  // depending on whether you are signing up or signing in, render AuthForm
   return (
     <>
       <AuthForm onSubmit={handleAuth} />
