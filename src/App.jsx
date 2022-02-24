@@ -13,8 +13,10 @@ export default function App() {
   return (
     <UserProvider>
       <Router>
-        <Header />
         <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route exact path="/login">
             <Auth />
           </Route>
@@ -25,6 +27,9 @@ export default function App() {
             <ConfirmEmail />
           </Route>
           <ProfileProvider>
+            <PrivateRoute>
+              <Header />
+            </PrivateRoute>
             <PrivateRoute exact path="/profile">
               <UserProfile />
             </PrivateRoute>
@@ -35,9 +40,6 @@ export default function App() {
               <ProfileForm />
             </PrivateRoute>
           </ProfileProvider>
-          <Route exact path="/">
-            <Home />
-          </Route>
         </Switch>
       </Router>
     </UserProvider>
