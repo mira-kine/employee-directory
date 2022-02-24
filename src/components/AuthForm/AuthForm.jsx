@@ -29,8 +29,8 @@ export default function AuthForm({ onSubmit, label }) {
 
   return (
     <>
+      {loading ? 'Loading' : ''}
       <form onSubmit={handleSubmit}>
-        <legend>{label}</legend>
         <label>Email</label>
         <input
           type="email"
