@@ -6,6 +6,7 @@ import Profile from './views/Profile/Profile';
 import CreateProfile from './views/CreateProfile/CreateProfile';
 import Edit from './views/Edit/Edit';
 import Register from './views/Register/Register';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
   return (
@@ -18,16 +19,16 @@ export default function App() {
         <Route exact path="/register">
           <Register />
         </Route>
-        <Route exact path="/profile">
-          <Profile />
-        </Route>
-        <Route exact path="/create-profile">
+        <PrivateRoute exact path="/create-profile">
           <CreateProfile />
-        </Route>
-        <Route exact path="/edit">
+        </PrivateRoute>
+        <PrivateRoute exact path="/profile">
+          <Profile />
+        </PrivateRoute>
+        <PrivateRoute exact path="/profile/edit">
           <Edit />
-        </Route>
-        <Route path="/">
+        </PrivateRoute>
+        <Route exact path="/">
           <Home />
         </Route>
       </Switch>
