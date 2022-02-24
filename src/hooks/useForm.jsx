@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 // takes form and handles according to input
 // handleForm connected to Auth view
@@ -20,13 +19,14 @@ export function useForm(inputs = {}) {
       setFormState(inputs);
     };
     // handleForm will be dynamic
-  };
-  return {
-    formState,
-    setFormState,
-    formError,
-    setFormError,
-    handleForm,
-    clearForm,
+
+    return {
+      formState,
+      setFormState,
+      formError,
+      setFormError,
+      handleForm,
+      clearForm,
+    };
   };
 }
