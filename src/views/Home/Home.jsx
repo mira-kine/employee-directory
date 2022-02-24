@@ -5,7 +5,7 @@ import './Home.css';
 export default function Home() {
   return (
     <div className="home-container">
-      <Link to="/login">Log in here!</Link>
+      <Link to="/login">Sign in here!</Link>
       <Link to="/register">Sign Up here!</Link>
     </div>
   );

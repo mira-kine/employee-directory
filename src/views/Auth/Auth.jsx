@@ -28,7 +28,11 @@ export default function Auth({ isSigningUp = false }) {
   // depending on whether you are signing up or signing in, render AuthForm
   return (
     <>
-      <h2>{isSigningUp ? 'Glad you are here' : 'Good to see you again'}</h2>
+      <h2>
+        {isSigningUp
+          ? 'Glad you are here - Sign up!'
+          : 'Good to see you again - Sign in!'}
+      </h2>
       <AuthForm
         onSubmit={handleAuth}
         // adding a label as a prop is cool

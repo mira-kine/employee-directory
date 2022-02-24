@@ -1,5 +1,5 @@
 import { useForm } from '../../hooks/useForm';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // form will be used for both register and login, depending on
 export default function AuthForm({ onSubmit, label }) {
   const { formState, handleForm, clearForm, setFormError, formError } = useForm(
@@ -27,26 +27,36 @@ export default function AuthForm({ onSubmit, label }) {
     }
   };
 
+  // useEffect(() => {
+  //   clearForm();
+  // }, [label]);
+
   return (
     <>
-      {loading ? 'Loading' : ''}
-      <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          value={formState.email}
-          onChange={handleForm}
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={formState.password}
-          onChange={handleForm}
-        />
-        <button type="submit">{label}</button>
-      </form>
+      {loading ? (
+        'Loading'
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <label>Email: </label>
+          <input
+            type="email"
+            name="email"
+            value={formState.email}
+            onChange={handleForm}
+          />
+          <label>Password: </label>
+          <input
+            type="password"
+            name="password"
+            value={formState.password}
+            onChange={handleForm}
+          />
+          <button type="submit" disabled={loading}>
+            {label}
+          </button>
+          <p>{formError}</p>
+        </form>
+      )}
     </>
   );
 }
