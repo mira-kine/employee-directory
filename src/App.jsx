@@ -7,6 +7,7 @@ import ProfileForm from './views/ProfileForm/ProfileForm';
 import Home from './views/Home/Home';
 import UserProfile from './views/UserProfile/UserProfile';
 import { UserProvider } from './context/UserProvider';
+import { ProfileProvider } from './context/ProfileProvider';
 
 export default function App() {
   return (
@@ -23,15 +24,17 @@ export default function App() {
           <Route exact path="/confirm-email">
             <ConfirmEmail />
           </Route>
-          <PrivateRoute exact path="/profile">
-            <UserProfile />
-          </PrivateRoute>
-          <PrivateRoute exact path="/profile/create">
-            <ProfileForm isCreating />
-          </PrivateRoute>
-          <PrivateRoute exact path="/profile/edit">
-            <ProfileForm />
-          </PrivateRoute>
+          <ProfileProvider>
+            <PrivateRoute exact path="/profile">
+              <UserProfile />
+            </PrivateRoute>
+            <PrivateRoute exact path="/profile/create">
+              <ProfileForm isCreating />
+            </PrivateRoute>
+            <PrivateRoute exact path="/profile/edit">
+              <ProfileForm />
+            </PrivateRoute>
+          </ProfileProvider>
           <Route exact path="/">
             <Home />
           </Route>

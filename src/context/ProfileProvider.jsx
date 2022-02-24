@@ -1,35 +1,30 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { getProfile } from '../services/profiles';
 
 const ProfileContext = createContext();
 
 const ProfileProvider = ({ children }) => {
-  const [profile, setProfile] = useState([
-    profile
-      ? {
-          name: profile.name,
-          birthday: profile.date,
-          bio: profile.bio,
-          email: profile.email,
-        }
-      : {},
-  ]);
-  const [loading, setLoading] = useState(false);
+  const [profile, setProfile] = useState({
+    name: '',
+    birthday: '',
+    bio: '',
+    email: '',
+  });
 
   // useEffect to try catch a profile
   useEffect(() => {
-    try {
-      const resp = getProfile();
-      // if there is profile, set into state
-      setProfile(resp);
-      setLoading(true);
-    } catch (e) {
-      // if no profile, set empty object
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  }, [loading]);
+    const fetchProfile = async () => {
+      try {
+        const resp = await getProfile();
+        // if there is profile, set into state
+        setProfile(resp);
+      } catch (e) {
+        // if no profile, set empty object
+        setProfile({ name: '', birthday: '', bio: '', email: '' });
+      }
+    };
+    fetchProfile();
+  }, []);
 
   return (
     <ProfileContext.Provider value={{ profile, setProfile }}>

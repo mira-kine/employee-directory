@@ -14,7 +14,7 @@
 
 - [x] AuthForm for Login/Create Account
 - [x] Private Route
-- [ ] Header (displays username)
+- [x] Header (displays username)
 - [ ] UserForm for Edit/Create Profile
 
 ## Context
@@ -33,3 +33,4 @@
 ## Things to still add
 
 - [ ] clearForm on Auth view
+- [ ] functioning sign out on header

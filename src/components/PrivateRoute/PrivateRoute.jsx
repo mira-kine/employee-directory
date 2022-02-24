@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { useUser } from '../../context/UserProvider';
 import { Redirect } from 'react-router-dom';
+
 export default function PrivateRoute({ children, ...routeProps }) {
   const { currentUser } = useUser();
 
@@ -9,7 +10,7 @@ export default function PrivateRoute({ children, ...routeProps }) {
     <Route
       {...routeProps}
       render={({ location }) =>
-        currentUser.email ? (
+        currentUser?.email ? (
           children
         ) : (
           <Redirect to={{ pathname: '/login', state: { from: location } }} />
