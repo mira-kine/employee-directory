@@ -5,7 +5,6 @@ import Auth from './views/Auth/Auth';
 import Profile from './views/Profile/Profile';
 import CreateProfile from './views/CreateProfile/CreateProfile';
 import Edit from './views/Edit/Edit';
-import Register from './views/Register/Register';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import ConfirmEmail from './views/Auth/ConfirmEmail';
 
@@ -15,10 +14,10 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/login">
-          <Auth isSigningUp />
+          <Auth />
         </Route>
         <Route exact path="/register">
-          <Register />
+          <Auth isSigningUp />
         </Route>
         <Route exact path="/confirm-email">
           <ConfirmEmail />

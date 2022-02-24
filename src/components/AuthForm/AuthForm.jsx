@@ -1,7 +1,7 @@
-import React from 'react';
 import { useForm } from '../../hooks/useForm';
+import React, { useState } from 'react';
 // form will be used for both register and login, depending on
-export default function AuthForm({ onSubmit }) {
+export default function AuthForm({ onSubmit, label }) {
   const { formState, handleForm, clearForm, setFormError, formError } = useForm(
     {
       email: '',
@@ -16,6 +16,8 @@ export default function AuthForm({ onSubmit }) {
     const { email, password } = formState;
     try {
       setFormError('');
+      if (!email || password.length < 8)
+        throw new Error('Your email and password with 8+ characters required');
       setLoading(true);
       await onSubmit(email, password);
     } catch (e) {
@@ -28,6 +30,7 @@ export default function AuthForm({ onSubmit }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <legend>{label}</legend>
         <label>Email</label>
         <input
           type="email"
@@ -42,7 +45,7 @@ export default function AuthForm({ onSubmit }) {
           value={formState.password}
           onChange={handleForm}
         />
-        <button type="submit">Sign in or Sign up (change the label)</button>
+        <button type="submit">{label}</button>
       </form>
     </>
   );
