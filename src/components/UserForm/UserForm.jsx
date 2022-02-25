@@ -1,16 +1,33 @@
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
+import { useState } from 'react';
+import { useUser } from '../../context/UserProvider';
 
 export default function UserForm({ onSubmit }) {
-  const { formState, handleForm } = useForm({
+  const { currentUser } = useUser();
+  const { formState, handleForm, setFormError, formError } = useForm({
     name: '',
     birthday: '',
     bio: '',
-    email: '',
+    email: currentUser.email,
   });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { name, birthday, bio, email } = formState;
+    try {
+      await onSubmit({ name, birthday, bio, email });
+    } catch (e) {
+      setFormError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div>
-      <form onSubmit={onSubmit}>
+    <>
+      <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input
           type="text"
@@ -43,6 +60,6 @@ export default function UserForm({ onSubmit }) {
         />
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </>
   );
 }

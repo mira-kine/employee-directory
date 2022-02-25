@@ -13,12 +13,6 @@ export default function ProfileForm({ isCreating = false }) {
     try {
       if (isCreating) {
         await createProfile(name, email, bio, birthday);
-        setProfile({
-          name,
-          email,
-          bio,
-          birthday,
-        });
         <Redirect to="/profile" />;
       } else {
         const resp = await updateProfile(name, email, bio, birthday);
