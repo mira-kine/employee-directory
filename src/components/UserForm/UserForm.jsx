@@ -1,5 +1,13 @@
 import React from 'react';
 
 export default function UserForm() {
-  return <div>Form to Create Profile/Edit Profile here</div>;
+  const { profile } = useProfile();
+  return (
+    <div>
+      <form>
+        <input type="text" value={name}></input>
+      </form>
+      >
+    </div>
+  );
 }
