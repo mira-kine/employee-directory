@@ -17,7 +17,9 @@ const ProfileProvider = ({ children }) => {
       try {
         const resp = await getProfile();
         // if there is profile, set into state
-        setProfile(resp);
+        if (resp.length > 0) {
+          setProfile(resp);
+        }
       } catch (e) {
         // if no profile, set empty object
         setProfile({ name: '', birthday: '', bio: '', email: '' });

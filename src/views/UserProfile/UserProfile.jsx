@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useProfile } from '../../context/ProfileProvider';
 
 export default function UserProfile() {
   // UserProfile View
@@ -8,7 +9,6 @@ export default function UserProfile() {
     <>
       <Link to="/profile/create">Temp create profile Link</Link>
       <Link to="/profile/edit">Temp edit profile Link</Link>
-      <div>This is where user information will go</div>
     </>
   );
 }

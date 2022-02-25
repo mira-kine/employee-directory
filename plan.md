@@ -5,7 +5,7 @@
 - [x] Login (/login) -> Auth isSigningUp = false
 - [x] Create Account (registering/sign up) -> Auth isSigningUp = true
 - [x] Homepage with <Link> to /register and /login
-- [ ] Profile View
+- [x] Profile View
 - [ ] Create Profile View - if they haven't created a profile yet, presented with "create profile" view with msg stating they need to create profile. -> ProfileForm View isCreating = true
   - should be a **form** with name: string, email: string, birthday: date (use <input type="date">), bio: text(use <textarea>)
 - [ ] Edit Profile view (can reuse Create profile view with adjustments) -> ProfileForm View isCreating = false
@@ -15,12 +15,12 @@
 - [x] AuthForm for Login/Create Account
 - [x] Private Route
 - [x] Header (displays username)
-- [ ] UserForm for Edit/Create Profile
+- [x] UserForm for Edit/Create Profile
 
 ## Context
 
-- [ ] User context
-- [ ] Profile context (because you need it in different parts of the app)
+- [x] User context
+- [x] Profile context (because you need it in different parts of the app)
 
 ## Userflow
 
@@ -33,4 +33,4 @@
 ## Things to still add
 
 - [ ] clearForm on Auth view
-- [ ] functioning sign out on header
+- [x] functioning sign out on header

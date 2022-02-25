@@ -1,6 +1,6 @@
 // try catch profile in a useEffect
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import UserForm from '../../components/UserForm/UserForm';
 import { useProfile } from '../../context/ProfileProvider';
 import { updateProfile, createProfile } from '../../services/profiles';
@@ -13,7 +13,13 @@ export default function ProfileForm({ isCreating = false }) {
     try {
       if (isCreating) {
         await createProfile(name, email, bio, birthday);
-        history.replace('/profile');
+        setProfile({
+          name,
+          email,
+          bio,
+          birthday,
+        });
+        <Redirect to="/profile" />;
       } else {
         const resp = await updateProfile(name, email, bio, birthday);
         setProfile({
