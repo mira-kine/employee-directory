@@ -2,15 +2,26 @@ import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useState } from 'react';
 import { useUser } from '../../context/UserProvider';
+import { useProfile } from '../../context/ProfileProvider';
 
 export default function UserForm({ onSubmit }) {
   const { currentUser } = useUser();
-  const { formState, handleForm, setFormError, formError } = useForm({
-    name: '',
-    birthday: '',
-    bio: '',
-    email: currentUser.email,
-  });
+  const { profile } = useProfile();
+  const { formState, handleForm, setFormError, formError } = useForm(
+    profile
+      ? {
+          name: profile.name,
+          birthday: profile.birthday,
+          bio: profile.bio,
+          email: profile.email,
+        }
+      : {
+          name: '',
+          birthday: '',
+          bio: '',
+          email: currentUser.email,
+        }
+  );
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
