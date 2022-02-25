@@ -6,7 +6,6 @@ import { useUser } from '../../context/UserProvider';
 
 export default function UserProfile() {
   const { profile, loading } = useProfile();
-  const { user } = useUser();
   const history = useHistory();
   // UserProfile View
   // i need profile context, renders according to whether profile exists or not
@@ -24,7 +23,11 @@ export default function UserProfile() {
   return (
     <>
       {loading && <p>Loading</p>}
-      {!loading && profile ? userProfile : <Redirect to="/profile/create" />}
+      {!loading && profile.name ? (
+        userProfile
+      ) : (
+        <Redirect to="/profile/create" />
+      )}
       <button onClick={handleClick}>Edit your profile</button>
     </>
   );
