@@ -5,7 +5,7 @@ import { useUser } from '../../context/UserProvider';
 import { useProfile } from '../../context/ProfileProvider';
 import { useHistory } from 'react-router-dom';
 
-export default function UserForm({ onSubmit, label, isCreating }) {
+export default function UserForm({ onSubmit, isCreating }) {
   const { currentUser } = useUser();
   const { profile } = useProfile();
   const { formState, handleForm, setFormError, formError } = useForm(

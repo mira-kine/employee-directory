@@ -31,11 +31,7 @@ export default function ProfileForm({ isCreating = false }) {
   return (
     <>
       {isCreating ? 'Create a Profile' : 'Edit your profile'}
-      <UserForm
-        onSubmit={handleProfile}
-        isCreating={isCreating}
-        label={isCreating ? '' : 'go back'}
-      />
+      <UserForm onSubmit={handleProfile} isCreating={isCreating} />
     </>
   );
 }
