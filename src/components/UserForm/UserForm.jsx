@@ -27,39 +27,43 @@ export default function UserForm({ onSubmit }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={formState.name}
-          onChange={handleForm}
-        />
-        <label>Birthday:</label>
-        <input
-          type="date"
-          name="birthday"
-          value={formState.birthday}
-          onChange={handleForm}
-        />
-        <label>Bio:</label>
-        <textarea
-          type="text"
-          className="bio"
-          name="bio"
-          value={formState.bio}
-          onChange={handleForm}
-        />
-        <label>Email:</label>
-        <input
-          type="text"
-          name="email"
-          disabled={true}
-          value={formState.email}
-          onChange={handleForm}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      {loading ? (
+        'Loading'
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formState.name}
+            onChange={handleForm}
+          />
+          <label>Birthday:</label>
+          <input
+            type="date"
+            name="birthday"
+            value={formState.birthday}
+            onChange={handleForm}
+          />
+          <label>Bio:</label>
+          <textarea
+            type="text"
+            className="bio"
+            name="bio"
+            value={formState.bio}
+            onChange={handleForm}
+          />
+          <label>Email:</label>
+          <input
+            type="text"
+            name="email"
+            disabled={true}
+            value={formState.email}
+            onChange={handleForm}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      )}
     </>
   );
 }
