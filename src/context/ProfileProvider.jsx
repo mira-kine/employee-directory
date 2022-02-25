@@ -27,10 +27,11 @@ const ProfileProvider = ({ children }) => {
       } catch (e) {
         // if no profile, set empty object
         setProfile({ name: '', birthday: '', bio: '', email: '' });
+      } finally {
+        setLoading(false);
       }
     };
     fetchProfile();
-    setLoading(false);
   }, [user]);
 
   return (

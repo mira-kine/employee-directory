@@ -2,7 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { useProfile } from '../../context/ProfileProvider';
-import { useUser } from '../../context/UserProvider';
 
 export default function UserProfile() {
   const { profile, loading } = useProfile();
