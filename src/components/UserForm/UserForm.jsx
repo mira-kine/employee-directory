@@ -3,8 +3,9 @@ import { useForm } from '../../hooks/useForm';
 import { useState } from 'react';
 import { useUser } from '../../context/UserProvider';
 import { useProfile } from '../../context/ProfileProvider';
+import { useHistory } from 'react-router-dom';
 
-export default function UserForm({ onSubmit }) {
+export default function UserForm({ onSubmit, label, isCreating }) {
   const { currentUser } = useUser();
   const { profile } = useProfile();
   const { formState, handleForm, setFormError, formError } = useForm(
@@ -23,6 +24,7 @@ export default function UserForm({ onSubmit }) {
         }
   );
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +36,10 @@ export default function UserForm({ onSubmit }) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleBack = () => {
+    history.push('/profile');
   };
 
   return (
@@ -73,6 +79,9 @@ export default function UserForm({ onSubmit }) {
             onChange={handleForm}
           />
           <button type="submit">Submit</button>
+          {!isCreating && (
+            <button onClick={handleBack}>Go back to profile</button>
+          )}
         </form>
       )}
     </>
